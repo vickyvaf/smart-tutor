@@ -4,8 +4,7 @@ A frontend implementation of an **Exam Mode** interface with a simulated AI help
 
 ## Project Preview
 
-https://github.com/user-attachments/assets/preview.mp4
-[Watch Preview Video](public/preview.mp4)
+https://github.com/user-attachments/assets/8b6b7200-c13e-4a32-abab-345574c133f2
 
 ## Setup Instructions
 
