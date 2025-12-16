@@ -1,25 +1,30 @@
 # Smart Tutor
 
-A frontend implementation of an **Exam Mode** interface with a simulated AI helper (**Ask Jojo**).
+A frontend implementation of an **Exam Mode** interface with a simulated AI helper (**Ask Jojo**), built with React, Vite, and XState.
+
+## Project Preview
+
+https://github.com/user-attachments/assets/preview.mp4
+[Watch Preview Video](public/preview.mp4)
 
 ## Setup Instructions
 
 1.  **Install Dependencies**
 
     ```bash
-    npm install
+    bun install
     ```
 
 2.  **Run Development Server**
 
     ```bash
-    npm run dev
+    bun dev
     ```
 
 3.  **Open Application**
     Navigate to `http://localhost:5173` in your browser.
 
-## Assumptions
+## Implementation Details
 
 - **Mock Data**: The questions are hardcoded in `src/data/questions.ts`.
 - **Simulated AI**: The AI responses are simulated using `setTimeout` within the XState machine (`src/machines/chatMachine.ts`) to mimic network latency.
