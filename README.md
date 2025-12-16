@@ -23,13 +23,13 @@ https://github.com/user-attachments/assets/8b6b7200-c13e-4a32-abab-345574c133f2
 3.  **Open Application**
     Navigate to `http://localhost:5173` in your browser.
 
-## Implementation Details
+## Assumptions
 
-- **Mock Data**: The questions are hardcoded in `src/data/questions.ts`.
-- **Simulated AI**: The AI responses are simulated using `setTimeout` within the XState machine (`src/machines/chatMachine.ts`) to mimic network latency.
-- **Styling**: The project uses Tailwind CSS v4 for styling.
-- **Math Rendering**: LaTeX content is rendered using `katex` and `react-katex`.
-- **Mobile First**: The layout is responsive, with a specific drawer implementation for chat on mobile devices.
+- The challenge focuses on frontend structure and UX rather than a full exam system
+- Only one question is implemented, based on the provided JSON
+- Math expressions are manually converted to LaTeX for the given question
+- Chat responses are mocked and do not call a real LLM API
+- No answer validation, scoring, timer, or exam completion logic is included
 
 ## Wiring to a Real LLM
 
@@ -81,10 +81,8 @@ To connect this UI to a real LLM API in production:
     });
     ```
 
-
 ## Suggestion
 
 While this project utilizes `react-katex` per specific requirements, it is generally recommended to use **`rehype-katex`** for rendering markdown with math. `rehype-katex` integrates seamlessly with the unified ecosystem (react-markdown, remark, rehype), offering better performance and automatic handling of math syntax without manual parsing or alignment workarounds.
 
 You can check it on this branch: [feat/rehype-katex](https://github.com/vickyvaf/smart-tutor/tree/feat/rehype-katex)
-
