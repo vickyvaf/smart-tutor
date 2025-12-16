@@ -1,11 +1,10 @@
-import { useState } from "react";
-import ReactMarkdown from "react-markdown";
-import RemarkMath from "remark-math";
-import RehypeKatex from "rehype-katex";
-import type { Question } from "../types";
 import "katex/dist/katex.min.css";
+import { CheckCircle2, ChevronRight } from "lucide-react";
+import React, { useState } from "react";
+import { BlockMath, InlineMath } from "react-katex";
+import ReactMarkdown from "react-markdown";
 import { cn } from "../lib/utils";
-import { ChevronRight, CheckCircle2 } from "lucide-react";
+import type { Question } from "../types";
 import { Button } from "../uikits";
 
 interface QuestionCardProps {
@@ -35,8 +34,43 @@ export function QuestionCard({ question, className }: QuestionCardProps) {
 
       <div className="flex-1 p-6 overflow-y-auto prose prose-slate max-w-none">
         <ReactMarkdown
-          remarkPlugins={[RemarkMath]}
-          rehypePlugins={[RehypeKatex]}
+          components={{
+            code({ className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || "");
+              if (match?.[1] === "math") {
+                return (
+                  <div className="overflow-x-auto my-4">
+                    <BlockMath math={String(children).replace(/\n$/, "")} />
+                  </div>
+                );
+              }
+              return (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+            p: ({ children }) => {
+              return (
+                <p className="mb-4 last:mb-0 leading-relaxed">
+                  {React.Children.map(children, (child) => {
+                    if (typeof child === "string") {
+                      const parts = child.split(/(\$[^$]+\$)/g);
+                      return parts.map((part, index) => {
+                        if (part.startsWith("$") && part.endsWith("$")) {
+                          return (
+                            <InlineMath key={index} math={part.slice(1, -1)} />
+                          );
+                        }
+                        return part;
+                      });
+                    }
+                    return child;
+                  })}
+                </p>
+              );
+            },
+          }}
         >
           {question.content}
         </ReactMarkdown>
