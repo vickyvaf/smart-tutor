@@ -23,12 +23,6 @@ https://github.com/user-attachments/assets/8b6b7200-c13e-4a32-abab-345574c133f2
 3.  **Open Application**
     Navigate to `http://localhost:5173` in your browser.
 
-## Suggestion
-
-While this project utilizes `react-katex` per specific requirements, it is generally recommended to use **`rehype-katex`** for rendering markdown with math. `rehype-katex` integrates seamlessly with the unified ecosystem (react-markdown, remark, rehype), offering better performance and automatic handling of math syntax without manual parsing or alignment workarounds.
-
-You can check from this branch.
-
 ## Implementation Details
 
 - **Mock Data**: The questions are hardcoded in `src/data/questions.ts`.
@@ -86,3 +80,11 @@ To connect this UI to a real LLM API in production:
       }
     });
     ```
+
+
+## Suggestion
+
+While this project utilizes `react-katex` per specific requirements, it is generally recommended to use **`rehype-katex`** for rendering markdown with math. `rehype-katex` integrates seamlessly with the unified ecosystem (react-markdown, remark, rehype), offering better performance and automatic handling of math syntax without manual parsing or alignment workarounds.
+
+You can check it on this branch: [feat/rehype-katex](https://github.com/vickyvaf/smart-tutor/tree/feat/rehype-katex)
+
